@@ -1,0 +1,20 @@
+<!--pages/home/home.wxml-->
+<!-- <text>pages/home/home.wxml</text> -->
+<w-swiper list="{{banners}}"/>
+<!-- 推荐数据 -->
+<w-recommends recommend="{{recommend}}" bind:imageload="handleImageLoad"/>
+<!-- 流行数据 -->
+<view class="popular">
+    <image src="/assets/images/home/recommend_bg.jpg" mode="widthFix" class="popular-img"></image>
+</view>
+<!-- 控制栏 -->
+<w-tabcontrol id="tab-control" title="{{title}}" bind:tabClick="handleTabClick" class="{{isTabFixed?'fixed':''}}"/>
+<w-tabcontrol title="{{title}}" wx:if="{{isTabFixed}}"/>
+<!-- 商品数据 -->
+<view class="goods">
+    <block wx:for="{{goods[currentType].list}}" wx:key="index">
+        <w-goods-item class="item" item="{{item}}"></w-goods-item>
+    </block>
+</view>
+<!-- 回到顶部 -->
+<w-back-top wx:if="{{showBackTop}}"/>
